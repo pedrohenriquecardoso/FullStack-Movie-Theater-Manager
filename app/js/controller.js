@@ -11,10 +11,8 @@ export default class Controller {
   constructor() {
     this.gerenciadorCinema = new GerenciadorCinema();
     this.cliente = new Cliente();
-    /* this.salas = new Salas(); */
     this.sessao = new Sessao();
     this.filme = new Filme();
-    /* this.cadeira = new Cadeira(); */
     this.usuario = new Usuario();
     this.login = new Login();
     this.reserva = new Reserva()
@@ -123,27 +121,6 @@ export default class Controller {
     let sessao = {filmeSessao: filmeSessao, salaSessao: salaSessao, audioSessao: audioSessao, tipoSessao: tipoSessao, dataSessao: dataSessao, horarioSessao: horarioSessao}
     this.sessao.postNewSessao(sessao)
   }   
-   
- /* domListaSessoes(){
-  let arrSessoes = JSON.parse(localStorage.getItem("sessoesCine"))
-  let divSessoes = document.querySelector("#divSessao")
-  arrSessoes.forEach((element) => {
-    divSessoes.innerHTML += 
-              `
-              <tbody>
-                 <td><img width="10" src="img/trash.png" onclick="controller.aoClicarNoIconeExcluir(${element.id})"></td>  
-                 <td><img width="10" src="img/alterar.png" onclick="controller.aoClicarNoIconeEditar(${element.id})"></td> 
-                 <td>${element.filme}</td> 
-                 <td>${element.sala}</td> 
-                 <td>${element.audio}</td> 
-                 <td>${element.imagem}</td>
-                 <td>${element.data}</td> 
-                 <td>${element.horario}</td>                       
-              </tbody>
-              `
-  })
-
-}  */
 
 /* RESERVAS */
   domArrReservas(){
