@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <title>Clientes</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="node_modules/bootstrap/compiler/bootstrap.css">
+  <link rel="stylesheet" href="node_modules/bootstrap/compiler/style.css">
+  <style>
+    .row.content {height: 1500px}
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+  </style> 
+  <script type="module">
+    import Cliente from "./js/controller.js";
+    window.controller = new Cliente();
+  </script>  
+</head>
+<body onload="controller.domListaClientes()">
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <div class="container-fluid text-center my-5">
+        <h4>Cinema High Tech</h4>
+
+      </div>
+      <div class="container-fluid">
+        <p class="my-3"><a class="list-group-item list-group-item-action" href="clientes.html">Clientes</a></p>
+        <p class="my-3"><a class="list-group-item list-group-item-action" href="filmes.html">Filmes</a></p>
+        <p class="active my-3"><a class="list-group-item list-group-item-action" href="sessao.html">Sessões</a></p>
+        <p class="my-3"><a class="list-group-item list-group-item-action" href="reservas.html">reservas</a></p>
+        <p class="my-3"><a class="list-group-item list-group-item-action" href="#">Logout</a></p>
+      </div><br>
+      <div class="form-group">
+        <input type="text" class="form-control" id="textoBusca" placeholder="Search">
+        <select id="filtro" class="form-control">
+          <option class="form-control">Selecione filtro</option>
+          <option value="nome" class="form-control">Nome</option>
+          <option value="email" class="form-control">E-mail</option>
+        </select>
+        <button onclick="controller.aoClicarBuscar()" class="btn btn-block btn-success" type="button">Search</button>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="col-sm">
+      
+      
+      <div class="container-fluid my-2">
+        <h4 class="list-group-item">Gerência de clientes</h4>      
+      </div>
+
+      <div class="container-fluid my-4">
+        <h4>Novo cliente</h4>
+      </div>
+
+      <div class="input-group my-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Nome</span>
+        </div>
+        <input id="nomeCliente" type="text" placeholder="do Cliente" class="form-control">
+      </div>
+
+      <div class="input-group my-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Idade</span>
+        </div>
+        <input id="idadeCliente" type="number" placeholder="do Cliente" class="form-control">
+      </div>
+
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">E-mail</span>
+        </div>
+        <input id="emailCliente" type="email" placeholder="do Cliente" class="form-control">
+      </div>
+
+      
+      <div class="container-fluid my-3">
+        <button onclick="controller.aoClicarAddCliente()" class="btn btn-block btn-lg btn-success">Salvar</button>
+        <button class="btn btn-block btn-lg btn-danger">Cancelar</button>
+      </div>
+
+      <div class="container-fluid my-3">
+        <h4 class="list-group-item">Resultado da busca:</h4>
+        <div id="resultadoBusca"></div>
+      </div>
+
+      <div class="container-fluid my-3">
+        <h4 class="list-group-item">Clientes cadastrados</h4>
+      </div>
+      <div class="table-responsive"> 
+        <table class="table table-striped">
+          <thead>
+            <tr><th>Excluir</th><th>Editar</th><th>Id/Nome</th><th>Idade</th><th>E-mail</th></tr>
+          </thead>
+          <tbody id="divClientes">
+            
+
+          </tbody>
+        </table>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <p>&copy; 2020</p>
+</footer>
+
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="node_modules/popper.js/dist/umd/popper.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+</body>
+</html>

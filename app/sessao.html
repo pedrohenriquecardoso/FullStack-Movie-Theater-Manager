@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <title>Sessões</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="node_modules/bootstrap/compiler/bootstrap.css">
+  <link rel="stylesheet" href="node_modules/bootstrap/compiler/style.css">
+  <style>
+    .row.content {height: 1500px}
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }    
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+  </style>
+  <script type="module">
+    import Controller from "./js/controller.js";
+    window.controller = new Controller();
+  </script>
+  <script type="module">
+    import Salas from "./js/salas.js";
+    window.salas = new Salas();
+  </script>
+</head>
+<body onload="controller.domListaFilmesSesoes(); controller.domListaSessoes(); salas.renderizarSelectSalasEmSessoes()">
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <div class="container-fluid text-center my-5">
+        <h4>Cinema High Tech</h4>
+
+      </div>
+      <div class="container-fluid">
+        <p class="my-3"><a class="list-group-item list-group-item-action" href="clientes.html">Clientes</a></p>
+        <p class="my-3"><a class="list-group-item list-group-item-action" href="filmes.html">Filmes</a></p>
+        <p class="active my-3"><a class="list-group-item list-group-item-action" href="sessao.html">Sessões</a></p>
+        <p class="my-3"><a class="list-group-item list-group-item-action" href="reservas.html">reservas</a></p>
+        <p class="my-3"><a class="list-group-item list-group-item-action" href="#">Logout</a></p>
+      </div><br>
+      <div class="form-group">
+        <input type="text" class="form-control" id="textoBusca" placeholder="Search">
+        <select id="filtro" class="form-control">
+          <option class="form-control">Selecione filtro</option>
+          <option value="filme" class="form-control">Filme</option>
+          
+        </select>
+        <button onclick="controller.aoClicarBuscar()" class="btn btn-block btn-success" type="button">Search</button>
+      </div>
+    </div>
+
+    <div class="col-sm">          
+      <div class="container-fluid my-2">
+        <h4 class="list-group-item">Gerencia de sessões</h4>
+      </div>
+
+      <div class="container-fluid my-4">
+        <h4>Nova sessão</h4>
+      </div>
+
+      <div class="input-group my-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Filme da sessão</span>
+        </div>
+        <select id="selectFilmesSessao" type="text" class="custom-select">
+          <option selected>Selecione</option>           
+        </select>
+      </div>
+
+      <div class="input-group my-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Sala da sessão</span>
+        </div>
+        <select id="selectSalaSessao" type="text" class="custom-select">
+          <option value="nada" selected>Selecione</option>           
+        </select>
+      </div>
+
+
+      <div class="input-group my-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Áudio da sessão</span>
+        </div>
+        <select id="selectAudioSessao" type="text" class="custom-select">
+          <option value="nada" selected>Selecione</option>  
+          <option value="legendado">Legendado</option> 
+          <option value="dublado">Dublado</option>          
+        </select>
+      </div>
+
+      <div class="input-group my-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Tipo de imagem</span>
+        </div>
+        <select id="selectTipoSessao" id="" type="text" class="custom-select">
+          <option value="nada" selected>Selecione</option> 
+          <option value="3D">3D</option>
+          <option value="2D">2D</option>          
+        </select>
+      </div>
+
+      <div class="input-group my-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Data da sessão</span>
+        </div>
+        <input id="inputDataSessao" type="date" class="form-control">
+      </div> 
+      
+      <div class="input-group my-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Horário de inicio</span>
+        </div>
+        <input id="inputHorarioSessao" type="number" class="form-control">
+      </div>
+
+      <div class="container-fluid my-3">
+        <button onclick="controller.aoCLicarAddSessao()" class="btn btn-block btn-lg btn-success">Salvar</button>
+        <button class="btn btn-block btn-lg btn-danger">Cancelar</button>
+      </div>
+
+      <div class="container-fluid my-3">
+        <h4 class="list-group-item">Resultado da busca:</h4>
+        <div id="resultadoBusca"></div>
+      </div>
+
+      <div class="container-fluid my-3">
+        <h4 class="list-group-item">Sessões cadastradas</h4>
+      </div>
+      <div class="table-responsive"> 
+        <table class="table table-striped">
+          <thead>
+            <tr><th>Excluir</th><th>Alterar</th><th>Filme</th><th>Sala</th><th>Áudio</th><th>Imagem</th><th>Data</th><th>Horario</th></tr>
+          </thead>
+          <tbody id="divSessoes">
+
+          </tbody>
+        </table>
+      </div>
+        
+
+       
+      
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid">
+  <p>Footer Text</p>
+</footer>
+
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="node_modules/popper.js/dist/umd/popper.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+</body>
+</html>
