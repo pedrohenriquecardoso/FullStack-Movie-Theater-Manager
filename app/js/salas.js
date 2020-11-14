@@ -56,39 +56,20 @@ export default class Salas {
           return res.json();
         })
         .then((json) => {
-          /* let sessaoBuscar = "" */
-          let reservasFeitasjson = json;
-          reservasFeitasjson.forEach((element) => {this.reservasFeitas += element.cadeiraReserva})
-          console.log(this.reservasFeitas)
-          console.log(sessaoConsulta)
+          
           this.cadeiras.forEach((elementCad) => {
-            divMontarCadeiras.innerHTML += `<div class="col-2  flex-fill" style="width: 50px;" id="${elementCad.nome}">${elementCad.nome}</div>`
+            divMontarCadeiras.innerHTML += `<div class="col-2  flex-fill" style="width: 50px; background-color: green;" id="${elementCad.nome}">${elementCad.nome}</div>`
+            
           })
-          /* this.salas.forEach((element) => {
-            if(element.nome == sessaoConsulta){
-              
-              for (let i = 0; i < 6; i++){
-                let divMontarCadeiras = document.getElementById("divMontarCadeiras")
-                sessaoBuscar = i + element.nome
-                divMontarCadeiras.innerHTML += `<div id="${sessaoBuscar}">${sessaoBuscar}</div>`
-              }
+          for (let i = 0; i < json.length; i++){
+            if (json[i].sessaoReserva == sessaoConsulta){
+                document.getElementById(`${json[i].cadeiraReserva}`).style.backgroundColor = 'red'; 
             } 
             
-          }) */
-          /*this.reservasFeitas[1].sessaoReserva == montarCadeiras.sala  */
-          this.montarCadeiras()
-          console.log(this.cadeiras)
+          }
+          
         });
     }
   }
-  montarCadeiras(){
-    /* console.log(sessaoSelect, sessaoReserva) */
-   /*  let divMontarCadeiras = document.getElementById("divMontarCadeiras")
-    sessaoSelect.forEach((element) => {
-        divMontarCadeiras.innerHTML += `<div>${element}</div>`
-        if(sessaoReserva.indexOf(element) > -1):style="backgroundcolor: red;" 
-        `<div id="">${element}</div>`
-        
-    }) */
-  } 
+  
 }
