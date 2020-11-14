@@ -3,7 +3,6 @@ export default class Salas {
   constructor() {
     this.A = {
       nome: "A"
-      /* cadeiras: [{ nome: "1A", ocupado: false },{ nome: "2A", ocupado: false },{ nome: "3A", ocupado: false },{ nome: "4A", ocupado: false },{ nome: "5A", ocupado: false },{ nome: "6A", ocupado: false },{ nome: "7A", ocupado: false },{ nome: "8A", ocupado: false },{ nome: "9A", ocupado: false },{ nome: "10A", ocupado: false },], */ 
     };
     this.B = {
       nome: "B"
