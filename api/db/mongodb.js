@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 module.exports = class ConnectDB {
     static conectarMongo() {
-        const DB_KEY = "mongodb+srv://admin:admin@cluster0.n4wte.mongodb.net/cineHT?retryWrites=true&w=majority";
+        const DB_KEY = "DB KEY";
         mongoose.connect(DB_KEY, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
