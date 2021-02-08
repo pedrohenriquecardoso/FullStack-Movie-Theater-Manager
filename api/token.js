@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const chavePrivada = "uTiQLNyNiF6qUoM252M9RxAZWEjiH6I567CPrFKwoowQVwDnvF"
+const chavePrivada = "chave Privada"
 
 function verificarToken(req, res, next) {
 
